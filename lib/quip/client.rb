@@ -18,23 +18,27 @@ module Quip
     end
 
     def get_current_user
-      get_json('users/current')
+      get 'users/current'
     end
 
+    def get_folders
+      get 'folders'
+    end
+    
     def get_folder(folder_id)
-      get_json("folders/#{folder_id}")
+      get "folders/#{folder_id}"
     end
 
     def get_thread(thread_id)
-      get_json("threads/#{thread_id}")
+      get "threads/#{thread_id}"
     end
 
-    def get_threads(thread_ids)
-      get_json("threads/?ids=#{thread_ids.join(',')}")
+    def get_threads(*thread_ids)
+      get 'threads', ids: thread_ids.join(',')
     end
 
     def get_recent_threads(count = 20, max_usec = nil)
-      get_json("threads/recent?count=#{count}&max_updated_usec=#{max_usec}")
+      get 'threads/recent', count: count, max_updated_usec: max_usec
     end
 
     def spreadsheet(thread_id)
@@ -42,29 +46,29 @@ module Quip
     end
 
     def add_thread_members(thread_id, member_ids)
-      post_json('threads/add-members', {
+      post('threads/add-members', {
         thread_id: thread_id,
         member_ids: member_ids.join(',')
       })
     end
 
     def remove_thread_members(thread_id, member_ids)
-      post_json('threads/remove-members', {
+      post('threads/remove-members', {
         thread_id: thread_id,
         member_ids: member_ids.join(',')
       })
     end
 
     def get_blob(thread_id, blob_id)
-      get_json("blob/#{thread_id}/#{blob_id}")
+      get("blob/#{thread_id}/#{blob_id}")
     end
 
     def get_messages(thread_id)
-      get_json("messages/#{thread_id}")
+      get("messages/#{thread_id}")
     end
 
     def post_message(thread_id, message)
-      post_json('messages/new', {thread_id: thread_id, content: message})
+      post('messages/new', {thread_id: thread_id, content: message})
     end
 
     def get_section(section_id, thread_id = nil)
@@ -73,14 +77,14 @@ module Quip
       element[0]
     end
 
-    def get_json(path)
+    def get(path, params = {})
       handle_json_with_retry_method do
-        response = HTTPX.plugin(:authentication).authentication("Bearer #{access_token}").get "#{base_url}/#{path}"
+        response = HTTPX.plugin(:authentication).authentication("Bearer #{access_token}").get "#{base_url}/#{path}", params: params
         JSON.parse(response.body)
       end
     end
 
-    def post_json(path, data)
+    def post(path, data)
       handle_json_with_retry_method do
         response = HTTPX.plugin(:authentication).authentication("Bearer #{access_token}").post "#{base_url}/#{path}", data
         JSON.parse(response.body)
