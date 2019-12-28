@@ -1,5 +1,3 @@
 require 'rails_quip/engine'
+require 'quip'
 
-module RailsQuip
-  # Your code goes here...
-end

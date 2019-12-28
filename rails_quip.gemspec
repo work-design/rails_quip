@@ -1,7 +1,7 @@
 $:.push File.expand_path('lib', __dir__)
 require 'rails_quip/version'
 
-Gem::sification.new do |s|
+Gem::Specification.new do |s|
   s.name = 'rails_quip'
   s.version = RailsQuip::VERSION
   s.authors = ['qinmingyuan']
@@ -19,5 +19,6 @@ Gem::sification.new do |s|
   ]
 
   s.add_dependency 'rails', '~> 6.0.2', '>= 6.0.2.1'
+  s.add_dependency 'httpx'
   s.add_development_dependency 'sqlite3'
 end

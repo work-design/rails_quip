@@ -75,14 +75,14 @@ module Quip
 
     def get_json(path)
       handle_json_with_retry_method do
-        response = HTTPX.get "#{base_url}/#{path}", { Authorization: "Bearer  #{access_token}" }
+        response = HTTPX.plugin(:authentication).authentication("Bearer #{access_token}").get "#{base_url}/#{path}"
         JSON.parse(response.body)
       end
     end
 
     def post_json(path, data)
       handle_json_with_retry_method do
-        response = HTTPX.post "#{base_url}/#{path}", data, { Authorization: "Bearer  #{access_token}" }
+        response = HTTPX.plugin(:authentication).authentication("Bearer #{access_token}").post "#{base_url}/#{path}", data
         JSON.parse(response.body)
       end
     end
