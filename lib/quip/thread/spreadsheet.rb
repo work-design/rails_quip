@@ -10,8 +10,8 @@ module Quip
       Quip::Sheet.new(
         accessor_method: :get_named_sheet,
         accessor_value: name,
-        quip_sheet: element, 
-        thread_id: thread_id, 
+        quip_sheet: element,
+        thread_id: thread_id,
         client: client
       )
     end
@@ -21,22 +21,20 @@ module Quip
     # already downloaded the document, you can specify `document_html`
     # directly
     def get_first_sheet
-      accessor_method = :get_first_sheet
       Quip::Sheet.new(
-        accessor_method: :get_first_sheet, 
-        quip_sheet: get_container("table", 0), 
-        thread_id: thread_id, 
+        accessor_method: :get_first_sheet,
+        quip_sheet: get_container("table", 0),
+        thread_id: thread_id,
         client: client
       )
     end
     
     # Like `get_first_spreadsheet`, but the last spreadsheet.
     def get_last_sheet
-      accessor_method = :get_last_sheet
       Quip::Sheet.new(
-        accessor_method: :get_last_sheet, 
-        quip_sheet: get_container("table", -1), 
-        thread_id: thread_id, 
+        accessor_method: :get_last_sheet,
+        quip_sheet: get_container("table", -1),
+        thread_id: thread_id,
         client: client
       )
     end
@@ -46,5 +44,6 @@ module Quip
       results = doc.css("//#{container}")
       results[index]
     end
+
   end
 end

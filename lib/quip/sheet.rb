@@ -21,9 +21,6 @@ module Quip
       @header_keys = get_row_items(quip_sheet.at_css("tr").children).collect{|n|
         n.to_s.dup.downcase.gsub(/ +/,'_')
       }
-      
-      # Return
-      @header_keys
     end
     
     # Return rows
@@ -32,9 +29,9 @@ module Quip
         quip_sheet.css("tr").each_with_index do |row, i|
           _is_header = (i == 0)
           _row = Quip::Sheet::Row.new({
-            is_header: _is_header, 
-            thread_id: thread_id, 
-            client: client, 
+            is_header: _is_header,
+            thread_id: thread_id,
+            client: client,
             section_id: (row.attribute('id').value rescue nil),
             index: i
           })
@@ -52,10 +49,10 @@ module Quip
             
             text = (text.bytes == [226, 128, 139]) ? '' : text
             _row.columns[header_keys[j].to_sym] = Quip::Sheet::Cell.new({
-              text: text, 
+              text: text,
               section_id: col.attribute('id').value,
               node: col,
-              thread_id: thread_id, 
+              thread_id: thread_id,
               client: client
             })
           end
@@ -67,7 +64,7 @@ module Quip
     
     # Return row with value
     # key header key
-    # value 
+    # value
     # sheet.find_row_by_value('fb_ad_campaign_id', '1122333')
     def find_row_by_value(key, value)
       rows.each do |r|

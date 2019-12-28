@@ -24,7 +24,7 @@ module Quip
     def get_folder(folder_id)
       get_json("folders/#{folder_id}")
     end
-    
+
     def get_thread(thread_id)
       get_json("threads/#{thread_id}")
     end
@@ -32,11 +32,11 @@ module Quip
     def get_threads(thread_ids)
       get_json("threads/?ids=#{thread_ids.join(',')}")
     end
-    
-    def get_recent_threads(count = 10, max_usec = nil)
+
+    def get_recent_threads(count = 20, max_usec = nil)
       get_json("threads/recent?count=#{count}&max_updated_usec=#{max_usec}")
     end
-    
+
     def spreadsheet(thread_id)
       Quip::Spreadsheet.new(thread_id: thread_id, client: self)
     end
@@ -66,7 +66,7 @@ module Quip
     def post_message(thread_id, message)
       post_json('messages/new', {thread_id: thread_id, content: message})
     end
-    
+
     def get_section(section_id, thread_id = nil)
       doc = parse_document_html(thread_id)
       element = doc.xpath(".//*[@id='#{section_id}']")
@@ -86,7 +86,7 @@ module Quip
         JSON.parse(response.body)
       end
     end
-    
+
     def handle_json_with_retry_method
       begin
         yield
