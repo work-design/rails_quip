@@ -1,29 +1,23 @@
-$:.push File.expand_path("lib", __dir__)
+$:.push File.expand_path('lib', __dir__)
 require 'rails_quip/version'
 
-# Describe your gem and declare its dependencies:
-Gem::Specification.new do |spec|
-  spec.name        = "rails_quip"
-  spec.version     = RailsQuip::VERSION
-  spec.authors     = ["qinmingyuan"]
-  spec.email       = ["mingyuan0715@foxmail.com"]
-  spec.homepage    = "TODO"
-  spec.summary     = "TODO: Summary of RailsQuip."
-  spec.description = "TODO: Description of RailsQuip."
-  spec.license     = "MIT"
+Gem::sification.new do |s|
+  s.name = 'rails_quip'
+  s.version = RailsQuip::VERSION
+  s.authors = ['qinmingyuan']
+  s.email = ['mingyuan0715@foxmail.com']
+  s.homepage = 'https://github.com/work-design/rails_quip'
+  s.summary = 'Summary of RailsQuip.'
+  s.description = 'Description of RailsQuip.'
+  s.license = 'LGPL-3.0'
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
+  s.files = Dir[
+    '{app,config,db,lib}/**/*',
+    'LICENSE',
+    'Rakefile',
+    'README.md'
+  ]
 
-  spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
-
-  spec.add_dependency "rails", "~> 6.0.2", ">= 6.0.2.1"
-
-  spec.add_development_dependency "sqlite3"
+  s.add_dependency 'rails', '~> 6.0.2', '>= 6.0.2.1'
+  s.add_development_dependency 'sqlite3'
 end

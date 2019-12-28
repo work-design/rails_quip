@@ -1,4 +1,4 @@
-require 'rest-client'
+require 'httpx'
 require 'json'
 
 module Quip
@@ -42,14 +42,14 @@ module Quip
     end
 
     def add_thread_members(thread_id, member_ids)
-      post_json("threads/add-members", {
+      post_json('threads/add-members', {
         thread_id: thread_id,
         member_ids: member_ids.join(',')
       })
     end
 
     def remove_thread_members(thread_id, member_ids)
-      post_json("threads/remove-members", {
+      post_json('threads/remove-members', {
         thread_id: thread_id,
         member_ids: member_ids.join(',')
       })
@@ -64,25 +64,25 @@ module Quip
     end
 
     def post_message(thread_id, message)
-      post_json("messages/new", {thread_id: thread_id, content: message})
+      post_json('messages/new', {thread_id: thread_id, content: message})
     end
     
     def get_section(section_id, thread_id = nil)
       doc = parse_document_html(thread_id)
       element = doc.xpath(".//*[@id='#{section_id}']")
-      return element[0]
+      element[0]
     end
 
     def get_json(path)
       handle_json_with_retry_method do
-        response = RestClient.get "#{base_url}/#{path}", {Authorization: "Bearer  #{access_token}"}
+        response = HTTPX.get "#{base_url}/#{path}", { Authorization: "Bearer  #{access_token}" }
         JSON.parse(response.body)
       end
     end
 
     def post_json(path, data)
       handle_json_with_retry_method do
-        response = RestClient.post "#{base_url}/#{path}", data, {Authorization: "Bearer  #{access_token}"}
+        response = HTTPX.post "#{base_url}/#{path}", data, { Authorization: "Bearer  #{access_token}" }
         JSON.parse(response.body)
       end
     end

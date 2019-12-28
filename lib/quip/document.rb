@@ -17,11 +17,11 @@ module Quip
     
     def name
       doc = parse_document_html
-      element = doc.at_css("h1").text
+      doc.at_css('h1').text
     end
   
     def create_document(content, options = {})
-      @client.post_json("threads/new-document", {
+      @client.post_json('threads/new-document', {
         content: content,
         format: options.fetch(:format, 'html'),
         title: options.fetch(:title, nil),
@@ -30,7 +30,7 @@ module Quip
     end
 
     def edit_document(content = nil, options = {})
-      @client.post_json("threads/edit-document", {
+      @client.post_json('threads/edit-document', {
         thread_id: thread_id,
         content: content,
         location: options.fetch(:location, 0),
@@ -47,12 +47,11 @@ module Quip
   
     def document_html
       @document_html ||= @client.get_thread(thread_id)["html"]
-      @document_html
     end
   
     def parse_document_html
       @parse_document_html ||= Nokogiri::HTML(document_html)
-      @parse_document_html
     end
+    
   end
 end

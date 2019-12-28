@@ -1,0 +1,6 @@
+require 'quip/client'
+require 'quip/document'
+require 'quip/spreadsheet'
+require 'quip/sheet'
+require 'quip/sheet/row'
+require 'quip/sheet/cell'
