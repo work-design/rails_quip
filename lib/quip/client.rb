@@ -17,7 +17,7 @@ module Quip
       @retry_count = 0
     end
 
-    def get_authenticated_user
+    def get_current_user
       get_json('users/current')
     end
 
