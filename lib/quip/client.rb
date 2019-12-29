@@ -34,7 +34,7 @@ module Quip
     end
 
     def get_threads(*thread_ids)
-      get 'threads', ids: thread_ids.join(',')
+      get "threads/?ids=#{thread_ids.join(',')}"
     end
 
     def get_recent_threads(count = 20, max_usec = nil)
