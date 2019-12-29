@@ -1,4 +1,5 @@
 require 'quip/client'
+require 'quip/thread'
 require 'quip/thread/document'
 require 'quip/thread/spreadsheet'
 require 'quip/sheet'

@@ -41,10 +41,6 @@ module Quip
       get 'threads/recent', count: count, max_updated_usec: max_usec
     end
 
-    def spreadsheet(thread_id)
-      Quip::Spreadsheet.new(thread_id: thread_id, client: self)
-    end
-
     def add_thread_members(thread_id, member_ids)
       post('threads/add-members', {
         thread_id: thread_id,

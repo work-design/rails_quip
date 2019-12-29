@@ -19,7 +19,10 @@ module RailsQuip::QuipApp
   
   def private_threads
     ids = folders['thread_id']
-    api.get_threads Array(ids)
+    r = api.get_threads Array(ids)
+    r.map do |k, v|
+      Quip::Thread.new(v, client: api)
+    end
   end
 
 end

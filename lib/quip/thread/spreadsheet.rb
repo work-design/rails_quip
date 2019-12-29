@@ -1,7 +1,7 @@
-class Quip::Thread::Spreadsheet < Quip::Thread
+class Quip::Thread::Spreadsheet
  
-  def initialize(options)
-    super
+  def initialize(html)
+    @html = html
   end
   
   def get_named_sheet(name)

@@ -1,5 +1,5 @@
 class Quip::Thread
-  attr_reader :thread_id, :client
+  attr_reader :thread_id, :client, :content
   
   # Locations
   APPEND = 0           # - Append to the end of the document.
@@ -9,8 +9,15 @@ class Quip::Thread
   REPLACE_SECTION = 4  # - Delete the section specified by section_id and insert the new content at that location.
   DELETE_SECTION = 5   # - Delete the section specified by section_id (no content required).
   
-  def initialize(options = {})
-    @thread_id = options[:thread_id]
+  def initialize(v, options = {})
+    @thread = v['thread']
+    case @thread['type']
+    when 'document'
+      @content = Quip::Thread::Document.new(v['html'])
+    when
+      @content = Quip::Thread::Spreadsheet.new(v['html'])
+    end
+    
     @client = options[:client]
   end
   
@@ -45,7 +52,7 @@ class Quip::Thread
   end
 
   def document_html
-    @document_html ||= @client.get_thread(thread_id)["html"]
+    @document_html ||= @client.get_thread(thread_id)['html']
   end
 
   def parse_document_html
