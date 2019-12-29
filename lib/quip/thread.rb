@@ -17,7 +17,7 @@ class Quip::Thread
     when
       @content = Quip::Thread::Spreadsheet.new(v['html'])
     end
-    
+
     @client = options[:client]
   end
   
