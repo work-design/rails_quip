@@ -1,0 +1,28 @@
+<table class="ui very basic large table">
+  <thead>
+    <tr>
+      <th class="six wide">
+        <%= link_to t('.edit'), edit_admin_quip_app_path(@quip_app), class: 'ui mini blue right floated button', remote: true %>
+      </th>
+      <th class="ten wide"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="right aligned"><%= QuipApp.human_attribute_name(:name) %></td>
+      <td><%= @quip_app.name %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= QuipApp.human_attribute_name(:access_token) %></td>
+      <td><%= @quip_app.access_token %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= QuipApp.human_attribute_name(:profile_picture_url) %></td>
+      <td><%= @quip_app.profile_picture_url %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= QuipApp.human_attribute_name(:private_folder_id) %></td>
+      <td><%= @quip_app.private_folder_id %></td>
+    </tr>
+  </tbody>
+</table>

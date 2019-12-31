@@ -1,6 +1,13 @@
 GIT
+  remote: https://github.com/qinmingyuan/default_form.git
+  revision: 7ce6c56a820f09850a2a7a162715b4cfddbcbb2f
+  specs:
+    default_form (1.5.0)
+      rails_com (~> 1.2)
+
+GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 1d5dcdb1f54184492a6c97798001e8bc956fbe97
+  revision: 86bf1e8301c3a4dc0737bf11b4958baac86d960f
   specs:
     rails_com (1.2.9)
       default_where (~> 2.2)
@@ -86,6 +93,18 @@ GEM
       timers
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
+    kaminari (1.1.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.1.1)
+      kaminari-activerecord (= 1.1.1)
+      kaminari-core (= 1.1.1)
+    kaminari-actionview (1.1.1)
+      actionview
+      kaminari-core (= 1.1.1)
+    kaminari-activerecord (1.1.1)
+      activerecord
+      kaminari-core (= 1.1.1)
+    kaminari-core (1.1.1)
     loofah (2.4.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -102,6 +121,8 @@ GEM
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
     rack (2.0.8)
+    rack-proxy (0.6.5)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.0.2.1)
@@ -144,6 +165,10 @@ GEM
     timers (4.3.0)
     tzinfo (1.2.6)
       thread_safe (~> 0.1)
+    webpacker (4.2.2)
+      activesupport (>= 4.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 4.2)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
@@ -153,9 +178,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  default_form!
+  kaminari
   rails_com!
   rails_quip!
   sqlite3
+  webpacker
 
 BUNDLED WITH
    2.0.2

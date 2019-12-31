@@ -1,0 +1,43 @@
+<div class="ui top attached segment">
+  <%= render 'filter' %>
+</div>
+
+<table class="ui bottom attached selectable table">
+  <thead>
+    <tr>
+      <th><%= QuipApp.human_attribute_name(:name) %></th>
+      <th><%= QuipApp.human_attribute_name(:access_token) %></th>
+      <th><%= QuipApp.human_attribute_name(:private_folder_id) %></th>
+      <th>
+        <%= link_to new_admin_quip_app_path, remote: true, class: 'ui mini green button' do %>
+          <i class="fas fa-plus"></i><%= t('.new') %>
+        <% end %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @quip_apps.each do |quip_app| %>
+    <tr>
+      <td>
+        <%= image_tag quip_app.profile_picture_url, class: 'ui avatar image' if quip_app.profile_picture_url.present? %>
+        <%= quip_app.name %>
+      </td>
+      <td><%= quip_app.access_token %></td>
+      <td><%= quip_app.private_folder_id %></td>
+      <td>
+        <%= link_to admin_quip_app_path(quip_app), data: { tooltip: t('.show') }, remote: true, class: 'ui mini circular icon button' do %>
+          <i class="fas fa-eye"></i>
+        <% end %>
+        <%= link_to edit_admin_quip_app_path(quip_app), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
+          <i class="fas fa-pencil-alt"></i>
+        <% end %>
+        <%= link_to admin_quip_app_path(quip_app), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, remote: true, class: 'ui mini circular icon button' do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @quip_apps %>
