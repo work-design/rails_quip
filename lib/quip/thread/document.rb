@@ -7,11 +7,17 @@ class Quip::Thread::Document < Quip::Thread
   end
   
   def to_html
-    @html.children.each do |html|
-      html.remove_class
-      html.remove_attribute 'id'
-    end
+    clean_html(@html)
     @html.to_html
+  end
+  
+  def clean_html(html)
+    html.element_children.each do |h|
+      h.remove_class
+      h.remove_attribute 'id'
+      h.remove_attribute 'style' if h['style'].blank?
+      clean_html(h)
+    end
   end
 
 end

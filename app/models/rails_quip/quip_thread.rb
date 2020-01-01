@@ -11,7 +11,11 @@ module RailsQuip::QuipThread
   end
   
   def content
-    Quip::Thread::Document.new(html).to_html
+    document.to_html
+  end
+  
+  def document
+    Quip::Thread::Document.new(html)
   end
   
 end

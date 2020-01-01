@@ -7,8 +7,8 @@
     <tr>
       <th><%= QuipThread.human_attribute_name(:type) %></th>
       <th><%= QuipThread.human_attribute_name(:title) %></th>
-      <th><%= QuipThread.human_attribute_name(:html) %></th>
-      <th><%= QuipThread.human_attribute_name(:content) %></th>
+      <th class="six wide"><%= QuipThread.human_attribute_name(:html) %></th>
+      <th class="six wide"><%= QuipThread.human_attribute_name(:content) %></th>
       <th>
         <%= link_to sync_admin_quip_app_quip_threads_path(@quip_app), method: :post, class: 'ui mini green button' do %>
           <i class="fas fa-plus"></i><%= t('.sync') %>
