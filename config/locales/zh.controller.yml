@@ -2,7 +2,7 @@ zh:
   quip:
     admin:
       title: Quip管理
-      quip_threads:
+      posts:
         index:
           title: Quip 文档
 

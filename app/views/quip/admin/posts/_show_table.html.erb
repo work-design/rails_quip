@@ -1,0 +1,28 @@
+<table class="ui very basic large table">
+  <thead>
+    <tr>
+      <th class="six wide">
+        <%= link_to t('.edit'), edit_admin_post_path(@post), class: 'ui mini blue right floated button', remote: true %>
+      </th>
+      <th class="ten wide"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="right aligned"><%= Post.human_attribute_name(:type) %></td>
+      <td><%= @post.type %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Post.human_attribute_name(:title) %></td>
+      <td><%= @post.title %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Post.human_attribute_name(:html) %></td>
+      <td><%= @post.html %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= Post.human_attribute_name(:content) %></td>
+      <td><%= @post.content %></td>
+    </tr>
+  </tbody>
+</table>

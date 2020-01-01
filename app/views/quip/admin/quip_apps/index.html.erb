@@ -28,7 +28,7 @@
         <%= link_to admin_quip_app_path(quip_app), data: { tooltip: t('.show') }, remote: true, class: 'ui mini circular icon button' do %>
           <i class="fas fa-eye"></i>
         <% end %>
-        <%= link_to admin_quip_app_quip_threads_path(quip_app), data: { tooltip: t('quip.admin.quip_threads.index.title') }, class: 'ui mini circular icon button' do %>
+        <%= link_to admin_quip_app_posts_path(quip_app), data: { tooltip: t('quip.admin.posts.index.title') }, class: 'ui mini circular icon button' do %>
           <i class="fas fa-blog"></i>
         <% end %>
         <%= link_to edit_admin_quip_app_path(quip_app), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>

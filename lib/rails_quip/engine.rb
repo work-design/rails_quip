@@ -1,7 +1,7 @@
 require 'rails_com'
 module RailsQuip
   class Engine < ::Rails::Engine
-  
+
     config.generators do |g|
       g.rails = {
         assets: false,
