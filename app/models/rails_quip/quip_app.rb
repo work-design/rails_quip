@@ -8,6 +8,7 @@ module RailsQuip::QuipApp
     
     belongs_to :organ, optional: true
     belongs_to :user, optional: true
+    has_many :quip_threads, dependent: :delete_all
     
     after_create_commit :sync_info
   end
@@ -25,9 +26,13 @@ module RailsQuip::QuipApp
   def private_threads
     r = api.get_folder private_folder_id
     ids = Array(r.dig('children')).to_combine_h
-    threads = api.get_threads Array(ids)
-    threads.map do |k, v|
-      Quip::Thread.new(v, client: api)
+    threads = api.get_threads Hash(ids)['thread_id']
+
+    threads.each do |k, v|
+      thread = quip_threads.find_or_initialize_by(source_id: k)
+      thread.title = v.dig('thread', 'title')
+      thread.html = v['html']
+      thread.save
     end
   end
   

@@ -1,0 +1,8 @@
+<%= form_with model: @quip_thread do |f| %>
+  <%= render 'shared/error_messages', target: @quip_thread %>
+  <%= f.text_field :type %>
+  <%= f.text_field :title %>
+  <%= f.text_field :html %>
+  <%= f.text_field :content %>
+  <%= f.submit %>
+<% end %>
