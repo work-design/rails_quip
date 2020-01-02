@@ -4,6 +4,8 @@ gemspec
 
 gem 'webpacker'
 gem 'kaminari'
+gem 'rails_detail', github: 'work-design/rails_detail'
 gem 'default_form', github: 'qinmingyuan/default_form'
 gem 'rails_com', github: 'work-design/rails_com'
-gem 'rails_detail', github: 'work-design/rails_detail'
+
+gem 'awesome_print'
