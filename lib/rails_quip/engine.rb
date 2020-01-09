@@ -17,15 +17,15 @@ module RailsQuip
       g.templates.unshift File.expand_path('lib/templates', RailsCom::Engine.root)
     end
 
-    initializer 'rails_quip.reset_autoload_paths', before: :let_zeitwerk_take_over do |app|
+    after_initialize do |app|
       if (root + 'lib/rails_quip/engine').to_s == ENGINE_PATH
         _all_load_paths(app.config.add_autoload_paths_to_load_path).reverse_each do |path|
           $LOAD_PATH.unshift(path) if File.directory?(path)
         end
         $LOAD_PATH.uniq!
-        #ActiveSupport::Dependencies.autoload_paths.unshift *@instance.send(:_all_autoload_paths)
+        ActiveSupport::Dependencies.autoload_paths = *@instance.send(:_all_autoload_paths)
       end
     end
-    
+
   end
 end
