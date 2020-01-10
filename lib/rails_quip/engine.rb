@@ -17,9 +17,14 @@ module RailsQuip
       g.templates.unshift File.expand_path('lib/templates', RailsCom::Engine.root)
     end
 
-    config.after_initialize do |app|
+    initializer 'rails_quip.xx', before: :let_zeitwerk_take_over  do |app|
       if defined?(ENGINE_PATH) && ENGINE_PATH == (root + 'lib/rails_quip/engine').to_s
-        ActiveSupport::Dependencies.autoload_paths = (@instance.send(:_all_autoload_paths) + ActiveSupport::Dependencies.autoload_paths).uniq.freeze
+        _all_load_paths(app.config.add_autoload_paths_to_load_path).reverse_each do |path|
+          $LOAD_PATH.unshift(path) if File.directory?(path)
+        end
+        $LOAD_PATH.uniq!
+
+        ActiveSupport::Dependencies.autoload_paths = (_all_autoload_paths + ActiveSupport::Dependencies.autoload_paths).uniq
       end
     end
 
