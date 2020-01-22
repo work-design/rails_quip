@@ -1,7 +1,10 @@
-<%= form_with model: @quip_app do |f| %>
+<%= form_with model: [:admin, @quip_app] do |f| %>
   <%= render 'shared/error_messages', target: @quip_app %>
   <%= f.text_field :name %>
   <%= f.text_field :access_token %>
+  <p>
+    <%= link_to 'get token', 'https://quip.com/dev/token', target: '_blank' %>
+  </p>
   <%= f.text_field :profile_picture_url %>
   <%= f.text_field :private_folder_id %>
   <%= f.submit %>
