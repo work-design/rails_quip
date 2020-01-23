@@ -5,14 +5,18 @@ class Quip::Thread::Document < Quip::Thread
     @raw_html = html
     @html = Nokogiri::HTML.fragment(html)
   end
-  
+
   def to_html
     clean_html(@html)
     @html.to_html
   end
-  
+
   def clean_html(html)
     html.element_children.each do |h|
+      if h.name == 'br'
+        h.remove
+        next
+      end
       h.remove_class
       h.remove_attribute 'id'
       h.remove_attribute 'style' if h['style'].blank?

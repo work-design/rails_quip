@@ -31,6 +31,7 @@ module RailsQuip::QuipApp
 
     threads.each do |k, v|
       post_sync = post_syncs.find_or_initialize_by(source_id: k)
+      post_sync.synced = true
       if post_sync.post
         post_sync.post
       else

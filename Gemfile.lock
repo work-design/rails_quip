@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_detail.git
-  revision: 361fa51de1c26281bf348004df08cf95f15148f2
+  revision: 38f20dad6a7aadfd39142d750677ab3b1f75a657
   specs:
     rails_detail (0.0.1)
       acts_as_list (~> 0.9)

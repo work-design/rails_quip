@@ -5,7 +5,6 @@
 <table class="ui bottom attached selectable table">
   <thead>
     <tr>
-      <th><%= Post.human_attribute_name(:type) %></th>
       <th><%= Post.human_attribute_name(:title) %></th>
       <th><%= Post.human_attribute_name(:html) %></th>
       <th><%= Post.human_attribute_name(:content) %></th>
@@ -19,7 +18,6 @@
   <tbody>
   <% @posts.each do |post| %>
     <tr>
-      <td><%= post.type %></td>
       <td><%= post.title %></td>
       <td><%= post.html %></td>
       <td><%= post.content %></td>
