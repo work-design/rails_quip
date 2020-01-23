@@ -8,12 +8,13 @@ class Quip::Thread::Document < Quip::Thread
 
   def to_html
     clean_html(@html)
-    @html.to_html
+    # Nokogiri Node SaveOptions without FORMAT
+    @html.to_html save_with: 70
   end
 
   def clean_html(html)
-    html.element_children.each do |h|
-      if h.name == 'br'
+    html.children.each do |h|
+      if h.name == 'br' || (h.text? && h.blank?)
         h.remove
         next
       end
