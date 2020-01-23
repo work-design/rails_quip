@@ -32,14 +32,14 @@ module RailsQuip::QuipApp
     threads.each do |k, v|
       post_sync = post_syncs.find_or_initialize_by(source_id: k)
       if post_sync.post
-        post = post_sync.post
+        post_sync.post
       else
-        post = posts.build
-        post_sync.post = post
+        post = post_sync.build_post
+        post.title = v.dig('thread', 'title')
+        post.html = v['html']
       end
-      post.title = v.dig('thread', 'title')
-      post.html = v['html']
-      post.save
+
+      post_sync.save
     end
   end
 
