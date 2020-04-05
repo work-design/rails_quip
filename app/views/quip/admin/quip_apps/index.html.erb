@@ -25,16 +25,16 @@
       <td><%= quip_app.access_token %></td>
       <td><%= quip_app.private_folder_id %></td>
       <td>
-        <%= link_to admin_quip_app_path(quip_app), aria: { label: t('.show') }, remote: true, class: 'ui mini circular icon button' do %>
+        <%= link_to admin_quip_app_path(quip_app), aria: { label: t('.show') }, remote: true, class: 'button is-small is-rounded is-light' do %>
           <i class="fas fa-eye"></i>
         <% end %>
-        <%= link_to admin_quip_app_posts_path(quip_app), aria: { label: t('quip.admin.posts.index.title') }, class: 'ui mini circular icon button' do %>
+        <%= link_to admin_quip_app_posts_path(quip_app), aria: { label: t('quip.admin.posts.index.title') }, class: 'button is-small is-rounded is-light' do %>
           <i class="fas fa-blog"></i>
         <% end %>
-        <%= link_to edit_admin_quip_app_path(quip_app), aria: { label: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
+        <%= link_to edit_admin_quip_app_path(quip_app), aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light' do %>
           <i class="fas fa-pencil-alt"></i>
         <% end %>
-        <%= link_to admin_quip_app_path(quip_app), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, remote: true, class: 'ui mini circular icon button' do %>
+        <%= link_to admin_quip_app_path(quip_app), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, remote: true, class: 'button is-small is-rounded is-light' do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </td>
