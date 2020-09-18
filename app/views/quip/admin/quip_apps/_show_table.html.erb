@@ -1,4 +1,4 @@
-<table class="ui very basic large table">
+<table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
       <th class="six wide">
@@ -9,19 +9,19 @@
   </thead>
   <tbody>
     <tr>
-      <td class="right aligned"><%= QuipApp.human_attribute_name(:name) %></td>
+      <td class="has-text-right"><%= QuipApp.human_attribute_name(:name) %></td>
       <td><%= @quip_app.name %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= QuipApp.human_attribute_name(:access_token) %></td>
+      <td class="has-text-right"><%= QuipApp.human_attribute_name(:access_token) %></td>
       <td><%= @quip_app.access_token %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= QuipApp.human_attribute_name(:profile_picture_url) %></td>
+      <td class="has-text-right"><%= QuipApp.human_attribute_name(:profile_picture_url) %></td>
       <td><%= @quip_app.profile_picture_url %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= QuipApp.human_attribute_name(:private_folder_id) %></td>
+      <td class="has-text-right"><%= QuipApp.human_attribute_name(:private_folder_id) %></td>
       <td><%= @quip_app.private_folder_id %></td>
     </tr>
   </tbody>

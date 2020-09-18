@@ -1,4 +1,4 @@
-<table class="ui very basic large table">
+<table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
       <th class="six wide">
@@ -9,15 +9,15 @@
   </thead>
   <tbody>
     <tr>
-      <td class="right aligned"><%= Post.human_attribute_name(:title) %></td>
+      <td class="has-text-right"><%= Post.human_attribute_name(:title) %></td>
       <td><%= @post.title %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Post.human_attribute_name(:html) %></td>
+      <td class="has-text-right"><%= Post.human_attribute_name(:html) %></td>
       <td><%= @post.html %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Post.human_attribute_name(:content) %></td>
+      <td class="has-text-right"><%= Post.human_attribute_name(:content) %></td>
       <td><%= @post.content %></td>
     </tr>
   </tbody>
