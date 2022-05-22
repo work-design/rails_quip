@@ -1,5 +1,5 @@
 <%= form_with model: [:admin, @quip_app] do |f| %>
-  <%= render 'shared/error_messages', target: @quip_app %>
+  <%= render 'error_messages', target: @quip_app %>
   <%= f.text_field :name %>
   <%= f.text_field :access_token %>
   <p>
